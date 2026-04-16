@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .bg   { fill: #111111; }
+    .ring { stroke: #ffffff; }
+    .dot  { fill: #111111; }
+    @media (prefers-color-scheme: light) {
+      .bg   { fill: #111111; }
+      .ring { stroke: #ffffff; }
+      .dot  { fill: #111111; }
+    }
+    @media (prefers-color-scheme: dark) {
+      .bg   { fill: #ffffff; }
+      .ring { stroke: #111111; }
+      .dot  { fill: #ffffff; }
+    }
+  </style>
+  <!-- Outer circle -->
+  <circle cx="16" cy="16" r="15" class="bg"/>
+  <!-- White ring around inner dot -->
+  <circle cx="16" cy="16" r="6" class="dot" stroke="none"/>
+  <circle cx="16" cy="16" r="6" fill="none" class="ring" stroke-width="3"/>
+</svg>
