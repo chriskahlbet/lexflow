@@ -764,7 +764,7 @@ export default function Dashboard() {
                       <div style={{ width: 26, height: 26, borderRadius: '50%', flexShrink: 0, background: msg.role === 'ai' ? 'linear-gradient(135deg, #254448, #254448)' : 'var(--bg-card-sub)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: msg.role === 'ai' ? '0 0 8px rgba(37,68,72,0.3)' : 'none' }}>
                         {msg.role === 'ai' ? <Bot size={13} color="white" /> : <Users size={13} color="var(--t4)" />}
                       </div>
-                      <div style={{ maxWidth: '82%', padding: '0.625rem 0.875rem', borderRadius: msg.role === 'ai' ? '3px 10px 10px 10px' : '10px 3px 10px 10px', background: msg.role === 'ai' ? 'var(--bg-card-sub)' : 'linear-gradient(135deg, #254448, #254448)', border: msg.role === 'ai' ? '1px solid var(--border)' : 'none', color: 'var(--t1)', fontSize: '0.8125rem', lineHeight: 1.6 }}>
+                      <div style={{ maxWidth: '82%', padding: '0.625rem 0.875rem', borderRadius: msg.role === 'ai' ? '3px 10px 10px 10px' : '10px 3px 10px 10px', background: msg.role === 'ai' ? '#254448' : 'linear-gradient(135deg, #2E6569, #254448)', border: 'none', color: '#ffffff', fontSize: '0.8125rem', lineHeight: 1.6 }}>
                         {msg.text}
                       </div>
                     </div>
