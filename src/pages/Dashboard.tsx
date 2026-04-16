@@ -116,7 +116,7 @@ export default function Dashboard() {
   const [selectedClient, setSelectedClient] = useState<number | null>(null)
   const [expandedIntake, setExpandedIntake] = useState<number | null>(1)
   const [replyOpen, setReplyOpen] = useState<number | null>(1)
-  const [replyContent, setReplyContent] = useState('')
+  const [replyContent, setReplyContent] = useState(() => getReplyTemplate(aiIntakes[0]))
   const [aiMessages, setAiMessages] = useState<AiMsg[]>(initialAiMsgs)
   const [aiInput, setAiInput] = useState('')
   const [aiLoading, setAiLoading] = useState(false)
