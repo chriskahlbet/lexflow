@@ -434,7 +434,7 @@ export default function IntakeAI() {
                     </div>
 
                     <div style={{ maxWidth: msg.role === 'user' ? '65%' : '75%' }}>
-                      <div style={{ padding: '0.75rem 1rem', borderRadius: msg.role === 'bot' ? '3px 12px 12px 12px' : '12px 3px 12px 12px', background: msg.role === 'bot' ? 'var(--bg-card-sub)' : 'linear-gradient(135deg, #254448, #254448)', border: msg.role === 'bot' ? '1px solid rgba(255,255,255,0.1)' : 'none', color: 'var(--t1)', fontSize: '0.8875rem', lineHeight: 1.65, whiteSpace: 'pre-wrap' }}>
+                      <div style={{ padding: '0.75rem 1rem', borderRadius: msg.role === 'bot' ? '3px 12px 12px 12px' : '12px 3px 12px 12px', background: msg.role === 'bot' ? 'var(--bg-card-sub)' : 'linear-gradient(135deg, #254448, #254448)', border: msg.role === 'bot' ? '1px solid rgba(255,255,255,0.1)' : 'none', color: msg.role === 'user' ? '#ffffff' : 'var(--t1)', fontSize: '0.8875rem', lineHeight: 1.65, whiteSpace: 'pre-wrap' }}>
                         {msg.content.split('**').map((part, i) =>
                           i % 2 === 1
                             ? <strong key={i} style={{ color: msg.role === 'user' ? 'rgba(255,255,255,0.9)' : 'var(--accent-d)' }}>{part}</strong>

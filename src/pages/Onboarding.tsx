@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { ChevronRight, ChevronLeft, Check, User, Briefcase, FileText, Calendar, Shield } from 'lucide-react'
+import { ChevronRight, ChevronLeft, Check, User, Briefcase, FileText, Shield } from 'lucide-react'
 
 type FormData = {
   firstName: string; lastName: string; email: string; phone: string; dob: string
@@ -56,53 +56,30 @@ export default function Onboarding() {
 
   if (submitted) {
     return (
-      <div style={{ minHeight: '100vh', background: 'var(--bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-        <div style={{ maxWidth: 540, width: '100%', textAlign: 'center' }}>
-          <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'linear-gradient(135deg, #F0923C, #E8700A)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', boxShadow: '0 0 40px rgba(240,146,60,0.45)' }}>
-            <Check size={36} color="white" strokeWidth={3} />
-          </div>
-          <h1 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--t1)', marginBottom: '1rem', letterSpacing: '-0.03em' }}>
-            Onboarding abgeschlossen!
-          </h1>
-          <p style={{ color: 'var(--t4)', fontSize: '1.0625rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-            Vielen Dank, <strong style={{ color: 'var(--t1)' }}>{form.firstName}</strong>. Ihr Fall wurde erfolgreich übermittelt. Unser Team wird Ihre Angaben prüfen und sich innerhalb von 24 Stunden bei Ihnen melden.
-          </p>
-          <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 14, padding: '1.5rem', textAlign: 'left', marginBottom: '2rem' }}>
-            <h3 style={{ color: 'var(--t2)', fontSize: '0.8125rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '1rem' }}>Ihre Angaben</h3>
-            {[
-              { label: 'Name', value: `${form.firstName} ${form.lastName}` },
-              { label: 'E-Mail', value: form.email },
-              { label: 'Rechtsgebiet', value: form.legalArea },
-              { label: 'Dringlichkeit', value: urgencyLevels.find(u => u.value === form.urgency)?.label ?? '' },
-            ].map(item => (
-              <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                <span style={{ color: 'var(--t5)', fontSize: '0.9rem' }}>{item.label}</span>
-                <span style={{ color: 'var(--t1)', fontSize: '0.9rem', fontWeight: 500 }}>{item.value}</span>
-              </div>
-            ))}
-          </div>
-          <div style={{ background: 'rgba(37,68,72,0.1)', border: '1px solid rgba(37,68,72,0.3)', borderRadius: 14, padding: '1.25rem 1.5rem', marginBottom: '1.25rem', textAlign: 'left' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '0.5rem' }}>
-              <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(135deg, #254448, #254448)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'white' }}>KI</span>
-              </div>
-              <span style={{ color: 'var(--accent-d)', fontWeight: 700, fontSize: '0.9375rem' }}>Nächster Schritt: KI-Dokumenten-Assistent</span>
+      <>
+        {/* Background (form still visible behind overlay) */}
+        <div style={{ minHeight: '100vh', background: 'var(--bg)', filter: 'blur(2px)', pointerEvents: 'none', opacity: 0.4 }} />
+        {/* Popup overlay */}
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: '1.5rem' }}>
+          <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 20, padding: '2.5rem 2rem', maxWidth: 420, width: '100%', textAlign: 'center', boxShadow: '0 24px 80px rgba(0,0,0,0.2)' }}>
+            <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'linear-gradient(135deg, #F0923C, #E8700A)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem', boxShadow: '0 0 32px rgba(240,146,60,0.4)' }}>
+              <Check size={32} color="white" strokeWidth={3} />
             </div>
-            <p style={{ color: 'var(--t4)', fontSize: '0.875rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-              Unser KI-Assistent führt Sie durch den Dokumenten-Upload und bereitet Ihren Fall optimal vor – schnell, sicher und ohne Wartezeit.
+            <h2 style={{ fontSize: '1.625rem', fontWeight: 800, color: 'var(--t1)', marginBottom: '0.75rem', letterSpacing: '-0.03em' }}>
+              Onboarding abgeschlossen!
+            </h2>
+            <p style={{ color: 'var(--t4)', fontSize: '0.9375rem', lineHeight: 1.65, marginBottom: '1.75rem' }}>
+              Vielen Dank, <strong style={{ color: 'var(--t1)' }}>{form.firstName}</strong>. Ihr Fall wurde erfolgreich übermittelt. Jetzt bereiten wir Ihre Unterlagen mit unserem KI-Assistenten vor.
             </p>
-            <button onClick={() => navigate('/intake')} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+            <button onClick={() => navigate('/intake')} className="btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '1rem', padding: '0.875rem' }}>
               KI-Intake starten <ChevronRight size={16} />
             </button>
-          </div>
-          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
-            <button onClick={() => navigate('/booking')} className="btn-secondary">
-              <Calendar size={16} /> Termin buchen
+            <button onClick={() => navigate('/')} style={{ marginTop: '0.75rem', background: 'none', border: 'none', color: 'var(--t5)', fontSize: '0.875rem', cursor: 'pointer', textDecoration: 'underline' }}>
+              Zur Startseite
             </button>
-            <Link to="/" className="btn-secondary">Zur Startseite</Link>
           </div>
         </div>
-      </div>
+      </>
     )
   }
 

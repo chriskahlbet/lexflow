@@ -115,7 +115,7 @@ export default function Dashboard() {
   const [statusFilter, setStatusFilter] = useState<string>('all')
   const [selectedClient, setSelectedClient] = useState<number | null>(null)
   const [expandedIntake, setExpandedIntake] = useState<number | null>(1)
-  const [replyOpen, setReplyOpen] = useState<number | null>(null)
+  const [replyOpen, setReplyOpen] = useState<number | null>(1)
   const [replyContent, setReplyContent] = useState('')
   const [aiMessages, setAiMessages] = useState<AiMsg[]>(initialAiMsgs)
   const [aiInput, setAiInput] = useState('')
