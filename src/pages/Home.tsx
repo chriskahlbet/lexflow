@@ -3,7 +3,7 @@ import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import { useTheme } from '../contexts/ThemeContext'
 import {
-  ChevronRight, Shield, Clock, MessageSquare, Calendar,
+  ChevronRight, Shield, MessageSquare, Calendar,
   BarChart3, Users, CheckCircle, Star, ArrowRight,
   FileText, Zap, Lock, TrendingUp, Bot, Briefcase
 } from 'lucide-react'
@@ -112,7 +112,7 @@ export default function Home() {
   // Dark mode swaps teal → orange
   const accent       = isDark ? '#F0923C' : '#254448'
   const accentLight  = isDark ? '#F5B876' : '#2E6569'
-  const accentDeep   = isDark ? '#C8690A' : '#1e3a3d'
+  // accentDeep removed (unused)
   const accentTint   = isDark ? 'rgba(240,146,60,0.12)' : 'rgba(37,68,72,0.12)'
   const accentTintBg = isDark ? 'rgba(240,146,60,0.08)' : 'rgba(37,68,72,0.03)'
   const accentGlow   = isDark ? 'rgba(240,146,60,0.35)' : 'rgba(37,68,72,0.35)'

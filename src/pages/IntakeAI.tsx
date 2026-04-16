@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import {
   Bot, User, Send, Paperclip, CheckCircle, RotateCcw,
   FileText, Upload, X, ChevronRight, LogOut, LayoutDashboard,
-  MessageSquare, Calendar, Activity, Settings, AlertCircle,
-  Clock, Zap, BookOpen, ArrowRight
+  MessageSquare, Calendar, Activity, Settings,
+  BookOpen, ArrowRight
 } from 'lucide-react'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 type Role = 'bot' | 'user'
-type MsgType = 'text' | 'options' | 'upload'
+// type MsgType = 'text' | 'options' | 'upload'
 
 interface Message {
   id: number
@@ -138,8 +138,6 @@ export default function IntakeAI() {
   const [selectedArea, setSelectedArea] = useState('')
   const [selectedIssue, setSelectedIssue] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
-
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, isTyping])
@@ -468,7 +466,6 @@ export default function IntakeAI() {
                               doc={doc}
                               onUpload={handleDocUpload}
                               onSkip={handleDocSkip}
-                              fileInputRef={fileInputRef}
                             />
                           ))}
                           {/* Done button */}
@@ -650,11 +647,10 @@ export default function IntakeAI() {
 
 // ─── Upload Card Component ────────────────────────────────────────────────────
 
-function UploadCard({ doc, onUpload, onSkip, fileInputRef }: {
+function UploadCard({ doc, onUpload, onSkip }: {
   doc: DocCard
   onUpload: (id: string, name: string) => void
   onSkip: (id: string) => void
-  fileInputRef: React.RefObject<HTMLInputElement | null>
 }) {
   const localRef = useRef<HTMLInputElement>(null)
 
